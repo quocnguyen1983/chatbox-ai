@@ -1,5 +1,4 @@
 require("dotenv").config();
-console.log("API KEY:", process.env.OPENAI_API_KEY);
 const express = require("express");
 const cors = require("cors");
 const OpenAI = require("openai");
@@ -29,6 +28,8 @@ app.post("/chat", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-app.listen(3001, () => {
-  console.log("Server đang chạy tại http://localhost:3001");
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log("Server đang chạy tại port " + PORT);
 });
+
